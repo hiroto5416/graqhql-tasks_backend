@@ -6,13 +6,21 @@ export class TaskService {
   tasks: Task[] = [];
 
   getTasks(): Task[] {
-    const task1 = new Task();
-    task1.id = 1;
-    task1.name = 'task1';
-    task1.dueData = '2023-01-01';
-    task1.status = 'NOT_STARTED';
-    // タスクフィールドに追加する
-    this.tasks.push(task1);
     return this.tasks;
+  }
+
+  createTask(name: string, dueData: string, description?: string): Task {
+    const newTask = new Task();
+    // 現在の配列の長さプラス１の値をIDとしてセット
+    newTask.id = this.tasks.length + 1;
+    newTask.name = name;
+    newTask.dueData = dueData;
+    newTask.status = 'NOT_STARTED';
+    newTask.description = description || '';
+
+    // タスク配列に追加する
+    this.tasks.push(newTask);
+
+    return newTask;
   }
 }
