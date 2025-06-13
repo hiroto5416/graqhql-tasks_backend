@@ -3,6 +3,7 @@ import { TaskService } from './task.service';
 import { Task as TaskModel } from './models/task.module';
 import { CreateTaskInput } from './dto/createTask.input';
 import { Task } from 'generated/prisma/client';
+import { UpdateTaskInput } from './dto/updateTask.input';
 
 @Resolver()
 export class TaskResolver {
@@ -20,5 +21,12 @@ export class TaskResolver {
     @Args('createTaskInput') createTaskInput: CreateTaskInput,
   ): Promise<Task> {
     return await this.taskService.createTask(createTaskInput);
+  }
+
+  @Mutation(() => TaskModel)
+  async updateTask(
+    @Args('updateTaskInput') UpdateTaskInput: UpdateTaskInput,
+  ): Promise<Task> {
+    return await this.taskService.updateTask(UpdateTaskInput);
   }
 }
