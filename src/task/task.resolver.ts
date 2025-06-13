@@ -11,9 +11,11 @@ export class TaskResolver {
   constructor(private readonly taskService: TaskService) {}
 
   @Query(() => [TaskModel], { nullable: 'items' })
-  async getTasks(): Promise<Task[]> {
+  async getTasks(
+    @Args('userId', { type: () => Int }) userId: number,
+  ): Promise<Task[]> {
     // ※サービスのGETタスクメソッドの結果を返却する
-    return await this.taskService.getTasks();
+    return await this.taskService.getTasks(userId);
   }
 
   @Mutation(() => TaskModel)

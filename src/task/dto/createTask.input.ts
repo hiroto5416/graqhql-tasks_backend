@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import { Field, InputType } from '@nestjs/graphql';
+import { Field, InputType, Int } from '@nestjs/graphql';
 import { IsDateString, IsNotEmpty } from 'class-validator';
 
 @InputType()
@@ -14,4 +14,7 @@ export class CreateTaskInput {
 
   @Field({ nullable: true })
   description?: string;
+
+  @Field(() => Int)
+  userId: number;
 }
