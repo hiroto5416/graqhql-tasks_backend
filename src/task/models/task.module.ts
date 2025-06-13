@@ -10,7 +10,7 @@ export class Task {
   name: string;
 
   @Field()
-  dueData: string;
+  dueDate: string;
 
   @Field()
   status: Status;
