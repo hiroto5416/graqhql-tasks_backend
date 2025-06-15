@@ -22,4 +22,11 @@ export class UserService {
       },
     });
   }
+
+  async getUser(email: string): Promise<any> {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+    return await this.prismaService.user.findUnique({
+      where: { email },
+    });
+  }
 }
