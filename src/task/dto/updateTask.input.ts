@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { Field, InputType, Int } from '@nestjs/graphql';
 import { IsDateString, IsEnum, IsNotEmpty, IsOptional } from 'class-validator';
 import { Status } from 'generated/prisma';
